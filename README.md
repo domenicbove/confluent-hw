@@ -28,3 +28,14 @@ cd cp-ansible
 git checkout 5.2.x-dom
 ansible-playbook -i /path/to/confluent-hw/hosts.yml upgrade.yml
 ```
+
+5. To connect to any hosts
+```
+ssh centos@ec2-<ip>.us-west-2.compute.amazonaws.com
+```
+
+6. Finally to clean all this up
+```
+cd terraform
+terraform destroy
+```
