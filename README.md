@@ -14,7 +14,7 @@ terraform init
 terraform apply
 ```
 
-3. Pull down MY cp-ansible code and run the installer with the newly created
+3. Pull down MY cp-ansible code and run the installer with the newly created hosts.yml file
 ```
 git clone https://github.com/domenicbove/cp-ansible
 cd cp-ansible
