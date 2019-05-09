@@ -1,7 +1,7 @@
 # Base Confluent Platform Infrastructure on AWS
 
-To provision:
-1. Create AWS credentials and save to terraform/terraform.tfvars
+### To provision this is pretty basic infrastructure:
+1. Save your AWS credentials to terraform/terraform.tfvars
 ```
 access_key = "XXXXX"
 secret_key = "XXXXX"
