@@ -7,14 +7,14 @@ access_key = "XXXXX"
 secret_key = "XXXXX"
 ```
 
-2. Run terraform apply!
+2. Run terraform apply to provision aws objects as well as an hosts.yml file!
 ```
 cd terraform
 terraform init
 terraform apply
 ```
 
-3. Pull down MY cp-ansible code and run the installer with the newly created hosts.yml file
+3. Pull down MY cp-ansible code and run the installer
 ```
 git clone https://github.com/domenicbove/cp-ansible
 cd cp-ansible
