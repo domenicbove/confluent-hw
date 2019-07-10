@@ -5,10 +5,6 @@ resource "aws_route_table" "routetable" {
     cidr_block = "0.0.0.0/0"
     gateway_id = "${aws_internet_gateway.igw.id}"
   }
-
-  tags {
-    name = "routing"
-  }
 }
 
 resource "aws_route_table_association" "public_routetable" {

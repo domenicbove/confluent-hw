@@ -13,9 +13,6 @@ resource "aws_instance" "node1" {
 
 resource "aws_eip" "eip-node1" {
   vpc = true
-  tags {
-    Name = "master"
-  }
 }
 
 resource "aws_eip_association" "eip_node1_assoc" {
@@ -38,9 +35,6 @@ resource "aws_instance" "node2" {
 
 resource "aws_eip" "eip-node2" {
   vpc = true
-  tags {
-    Name = "master"
-  }
 }
 
 resource "aws_eip_association" "eip_node2_assoc" {
@@ -64,9 +58,6 @@ resource "aws_instance" "node3" {
 
 resource "aws_eip" "eip-node3" {
   vpc = true
-  tags {
-    Name = "master"
-  }
 }
 
 resource "aws_eip_association" "eip_node3_assoc" {

@@ -78,8 +78,6 @@ resource "aws_security_group" "bastion" {
     self        = true
     #cidr_blocks = ["0.0.0.0/0"]
   }
-
-
   egress {
     from_port       = 0
     to_port         = 0
@@ -87,6 +85,7 @@ resource "aws_security_group" "bastion" {
     cidr_blocks     = ["0.0.0.0/0"]
   }
 }
+
 #
 # resource "aws_security_group" "node" {
 #   name        = "node"
@@ -132,7 +131,6 @@ resource "aws_security_group" "bastion" {
 #
 #   tags {
 #     Name      = "Node"
-#     clusterid = "${var.clusterid}"
 #   }
 # }
 #
@@ -218,7 +216,6 @@ resource "aws_security_group" "bastion" {
 #
 #   tags {
 #     Name      = "Master"
-#     clusterid = "${var.clusterid}"
 #   }
 # }
 #
@@ -266,6 +263,5 @@ resource "aws_security_group" "bastion" {
 #
 #   tags {
 #     Name      = "Infra"
-#     clusterid = "${var.clusterid}"
 #   }
 # }

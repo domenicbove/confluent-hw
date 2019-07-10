@@ -8,7 +8,7 @@ data "template_file" "hosts" {
 }
 
 resource "null_resource" "local" {
-  triggers {
+  triggers = {
     template = "${data.template_file.hosts.rendered}"
   }
 
