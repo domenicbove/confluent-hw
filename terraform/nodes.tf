@@ -1,14 +1,9 @@
 resource "aws_instance" "node1" {
-  ami             = "${var.centos_ami}"
+  ami             = "${var.ami}"
   instance_type   = "${var.ec2_type_master}"
   key_name        = "${aws_key_pair.default.key_name}"
   vpc_security_group_ids = ["${aws_security_group.bastion.id}"]
   subnet_id       = "${aws_subnet.public.id}"
-
-  # root_block_device {
-  #   delete_on_termination = true
-  #   volume_size = 50
-  # }
 }
 
 resource "aws_eip" "eip-node1" {
@@ -21,16 +16,11 @@ resource "aws_eip_association" "eip_node1_assoc" {
 }
 
 resource "aws_instance" "node2" {
-  ami             = "${var.centos_ami}"
+  ami             = "${var.ami}"
   instance_type   = "${var.ec2_type_master}"
   key_name        = "${aws_key_pair.default.key_name}"
   vpc_security_group_ids = ["${aws_security_group.bastion.id}"]
   subnet_id       = "${aws_subnet.public.id}"
-
-  # root_block_device {
-  #   delete_on_termination = true
-  #   volume_size = 50
-  # }
 }
 
 resource "aws_eip" "eip-node2" {
@@ -44,16 +34,11 @@ resource "aws_eip_association" "eip_node2_assoc" {
 
 
 resource "aws_instance" "node3" {
-  ami             = "${var.centos_ami}"
+  ami             = "${var.ami}"
   instance_type   = "${var.ec2_type_master}"
   key_name        = "${aws_key_pair.default.key_name}"
   vpc_security_group_ids = ["${aws_security_group.bastion.id}"]
   subnet_id       = "${aws_subnet.public.id}"
-
-  # root_block_device {
-  #   delete_on_termination = true
-  #   volume_size = 50
-  # }
 }
 
 resource "aws_eip" "eip-node3" {

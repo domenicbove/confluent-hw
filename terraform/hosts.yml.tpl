@@ -2,7 +2,7 @@ all:
   vars:
     ansible_ssh_common_args: -o StrictHostKeyChecking=no -o IdentitiesOnly=yes
     ansible_connection: ssh
-    ansible_ssh_user: centos
+    ansible_ssh_user: ec2-user
     ansible_become: true
     security_mode: plaintext
 preflight:
@@ -10,6 +10,9 @@ preflight:
     ${node1}:
     ${node2}:
     ${node3}:
+ssl_CA:
+  hosts:
+    ${node1}:
 zookeeper:
   hosts:
     ${node1}:
