@@ -4,7 +4,7 @@ all:
     ansible_connection: ssh
     ansible_ssh_user: ec2-user
     ansible_become: true
-    security_mode: plaintext
+    security_mode: ssl
 preflight:
   hosts:
     ${node1}:

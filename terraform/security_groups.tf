@@ -39,6 +39,7 @@ resource "aws_security_group" "bastion" {
     to_port     = "8088"
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+    self        = true
   }
 
   # 9092/tcp (kafka)
@@ -85,14 +86,14 @@ resource "aws_security_group" "bastion" {
     self        = true
     #cidr_blocks = ["0.0.0.0/0"]
   }
-  # 8088/tcp (ksql)
-  ingress {
-    from_port   = "8088"
-    to_port     = "8088"
-    protocol    = "tcp"
-    self        = true
-    #cidr_blocks = ["0.0.0.0/0"]
-  }
+  # # 8088/tcp (ksql)
+  # ingress {
+  #   from_port   = "8088"
+  #   to_port     = "8088"
+  #   protocol    = "tcp"
+  #   self        = true
+  #   #cidr_blocks = ["0.0.0.0/0"]
+  # }
   # 8083/tcp (connect cluster)
   ingress {
     from_port   = "8083"
