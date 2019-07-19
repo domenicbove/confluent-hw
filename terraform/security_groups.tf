@@ -1,6 +1,5 @@
 resource "aws_security_group" "bastion" {
   name        = "bastion"
-  description = "openshift bastion security group"
   vpc_id      = "${aws_vpc.vpc.id}"
 
   # ICMP (any)
@@ -86,14 +85,7 @@ resource "aws_security_group" "bastion" {
     self        = true
     #cidr_blocks = ["0.0.0.0/0"]
   }
-  # # 8088/tcp (ksql)
-  # ingress {
-  #   from_port   = "8088"
-  #   to_port     = "8088"
-  #   protocol    = "tcp"
-  #   self        = true
-  #   #cidr_blocks = ["0.0.0.0/0"]
-  # }
+
   # 8083/tcp (connect cluster)
   ingress {
     from_port   = "8083"
@@ -102,6 +94,7 @@ resource "aws_security_group" "bastion" {
     self        = true
     #cidr_blocks = ["0.0.0.0/0"]
   }
+
   egress {
     from_port       = 0
     to_port         = 0

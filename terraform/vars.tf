@@ -17,7 +17,7 @@ variable "ami" {
 #   default = "ami-0ab6b07a01e922253"
 # }
 
-variable "ec2_type_master" {
+variable "ec2_type_node" {
   default = "t2.medium"
 }
 variable "ec2_key" {

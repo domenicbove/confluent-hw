@@ -4,7 +4,11 @@ all:
     ansible_connection: ssh
     ansible_ssh_user: ec2-user
     ansible_become: true
-    security_mode: ssl
+    realm: confluent.example.com
+    kdc_hostname: ec2-user@ec2-52-52-177-114.us-west-1.compute.amazonaws.com
+    admin_hostname: ec2-user@ec2-52-52-177-114.us-west-1.compute.amazonaws.com
+    keytab_source_dir: /Users/dbove/workspace/keytabs
+    security_mode: kerberos
 preflight:
   hosts:
     ${node1}:
