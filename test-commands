@@ -37,15 +37,3 @@ Completed
 
 
 https://docs.confluent.io/current/quickstart/ce-quickstart.html#ce-quickstart
-
-## old
-curl https://www-us.apache.org/dist/kafka/2.2.0/kafka_2.12-2.2.0.tgz  -o kafka_2.12-2.2.0.tgz
-tar xf kafka_2.12-2.2.0.tgz
-cd kafka_2.12-2.2.0
-
-cat <<EOF > kafka.properties
-bootstrap.servers=localhost:9092
-security.protocol=PLAINTEXT
-EOF
-
-bin/kafka-broker-api-versions.sh --command-config kafka.properties --bootstrap-server localhost:9092
