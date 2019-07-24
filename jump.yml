@@ -1,0 +1,8 @@
+jumphost:
+  hosts:
+    ec2-54-153-63-147.us-west-1.compute.amazonaws.com:
+      ansible_ssh_common_args: -o StrictHostKeyChecking=no -o IdentitiesOnly=yes
+      ansible_connection: ssh
+      ansible_ssh_user: ec2-user
+      ansible_become: true
+
