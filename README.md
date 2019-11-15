@@ -2,6 +2,7 @@
 
 ### Requirements - Install these binaries locally:
 Ansible
+
 Terraform
 
 ### Steps
@@ -28,14 +29,12 @@ git checkout fips-take3
 ansible-playbook -i /path/to/confluent-hw/hosts.yml all.yml
 ```
 
-4. Review the hosts.yml file and see the public dns for control plane and go in the browser
-http://ec2-52-52-248-22.us-west-1.compute.amazonaws.com:9021
-or
-https://ec2-54-153-13-48.us-west-1.compute.amazonaws.com:9021
+4. Review the hosts.yml file and see the public dns for control plane and go it the browser:
+http://ec2-52-52-248-22.us-west-1.compute.amazonaws.com:9021 or https://ec2-54-153-13-48.us-west-1.compute.amazonaws.com:9021
 
 5. Run the component upgrade playbook:
 ```
-ansible-playbook -i /path/to/confluent-hw/hosts.yml upgrade.yml
+ansible-playbook -i /path/to/confluent-hw/hosts.yml upgrade_zookeeper.yml
 ```
 
 6. To connect to any hosts
