@@ -4,55 +4,29 @@ all:
     ansible_connection: ssh
     ansible_ssh_user: ec2-user
     ansible_become: true
-    realm: confluent.example.com
-    kdc_hostname: ec2-user@ec2-52-52-177-114.us-west-1.compute.amazonaws.com
-    admin_hostname: ec2-user@ec2-52-52-177-114.us-west-1.compute.amazonaws.com
-    keytab_source_dir: /Users/dbove/workspace/keytabs
-    security_mode: kerberos
-preflight:
-  hosts:
-    ${node1}:
-    ${node2}:
-    ${node3}:
-ssl_CA:
-  hosts:
-    ${node1}:
+
+    # Installing 5.4
+    confluent_common_repository_redhat_main_baseurl: "http://jenkins-confluent-packages.s3-us-west-2.amazonaws.com/5.4.x/54/rpm/5.4"
+    confluent_common_repository_redhat_main_gpgkey: "http://jenkins-confluent-packages.s3-us-west-2.amazonaws.com/5.4.x/54/rpm/5.4/archive.key"
+    confluent_common_repository_redhat_dist_baseurl: "http://jenkins-confluent-packages.s3-us-west-2.amazonaws.com/5.4.x/54/rpm/5.4"
+    confluent_common_repository_redhat_dist_gpgkey: "http://jenkins-confluent-packages.s3-us-west-2.amazonaws.com/5.4.x/54/rpm/5.4/archive.key"
+    confluent_package_redhat_suffix: -5.4.0-0.1.SNAPSHOT
+    confluent_package_version: 5.4.0
+    #confluent_server_enabled: true
+
 zookeeper:
   hosts:
-    ${node1}:
-    ${node2}:
-    ${node3}:
-broker:
+    ${node1_private_dns}:
+      ansible_ssh_host: ${node1_public_dns}
+    ${node2_private_dns}:
+      ansible_ssh_host: ${node2_public_dns}
+    ${node3_private_dns}:
+      ansible_ssh_host: ${node3_public_dns}
+kafka_broker:
   hosts:
-    ${node1}:
-      kafka:
-        broker:
-          id: 1
-    ${node2}:
-      kafka:
-        broker:
-          id: 2
-    ${node3}:
-      kafka:
-        broker:
-          id: 3
-schema-registry:
+    ${node1_private_dns}:
+    ${node2_private_dns}:
+    ${node3_private_dns}:
+control_center:
   hosts:
-    ${node1}:
-control-center:
-  hosts:
-    ${node2}:
-      confluent:
-        control:
-          center:
-            config:
-              confluent.controlcenter.connect.cluster: ${node1}:8083
-connect-distributed:
-  hosts:
-    ${node1}:
-kafka-rest:
-  hosts:
-    ${node1}:
-ksql:
-  hosts:
-    ${node2}:
+    ${node2_private_dns}:

@@ -50,6 +50,15 @@ resource "aws_security_group" "bastion" {
     #cidr_blocks = ["0.0.0.0/0"]
   }
 
+  # 9091/tcp (kafka)
+  ingress {
+    from_port   = "9091"
+    to_port     = "9091"
+    protocol    = "tcp"
+    self        = true
+    #cidr_blocks = ["0.0.0.0/0"]
+  }
+
   # 2181/tcp (zookeeper)
   ingress {
     from_port   = "2181"

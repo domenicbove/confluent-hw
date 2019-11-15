@@ -1,9 +1,12 @@
 data "template_file" "hosts" {
   template = "${file("${path.module}/hosts.yml.tpl")}"
   vars = {
-    node1 = "${aws_eip.eip_node1.public_dns}"
-    node2 = "${aws_eip.eip_node2.public_dns}"
-    node3 = "${aws_eip.eip_node3.public_dns}"
+    node1_public_dns = "${aws_eip.eip_node1.public_dns}"
+    node1_private_dns = "${aws_eip.eip_node1.private_dns}"
+    node2_public_dns = "${aws_eip.eip_node2.public_dns}"
+    node2_private_dns = "${aws_eip.eip_node2.private_dns}"
+    node3_public_dns = "${aws_eip.eip_node3.public_dns}"
+    node3_private_dns = "${aws_eip.eip_node3.private_dns}"
   }
 }
 
