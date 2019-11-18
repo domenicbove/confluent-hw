@@ -4,23 +4,28 @@ provider "aws" {
   region     = "${var.region}"
 }
 
-resource "aws_vpc" "vpc" {
-  cidr_block           = "172.16.0.0/16"
-  enable_dns_hostnames = true
-}
+# data "aws_vpc" "vpc" {
+#   id = "${var.vpc_id}"
+# }
 
-resource "aws_vpc_dhcp_options" "dhcp" {
-  domain_name          = "${var.region}.compute.internal"
-  domain_name_servers  = ["AmazonProvidedDNS"]
-}
-
-resource "aws_vpc_dhcp_options_association" "dns_resolver" {
-  vpc_id          = "${aws_vpc.vpc.id}"
-  dhcp_options_id = "${aws_vpc_dhcp_options.dhcp.id}"
-}
+# resource "aws_vpc" "vpc" {
+#   cidr_block           = "172.16.0.0/16"
+#   enable_dns_hostnames = true
+# }
+#
+# resource "aws_vpc_dhcp_options" "dhcp" {
+#   domain_name          = "${var.region}.compute.internal"
+#   domain_name_servers  = ["AmazonProvidedDNS"]
+# }
+#
+# resource "aws_vpc_dhcp_options_association" "dns_resolver" {
+#   vpc_id          = "${aws_vpc.vpc.id}"
+#   dhcp_options_id = "${aws_vpc_dhcp_options.dhcp.id}"
+# }
 
 resource "aws_internet_gateway" "igw" {
-  vpc_id = "${aws_vpc.vpc.id}"
+  # vpc_id = "${aws_vpc.vpc.id}"
+  vpc_id = "${var.vpc_id}"
 }
 
 data "aws_availability_zones" "azs" {}

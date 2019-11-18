@@ -1,6 +1,7 @@
 resource "aws_security_group" "bastion" {
   name        = "bastion"
-  vpc_id      = "${aws_vpc.vpc.id}"
+  # vpc_id      = "${aws_vpc.vpc.id}"
+  vpc_id = "${var.vpc_id}"
 
   # ICMP (any)
   ingress {

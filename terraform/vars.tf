@@ -18,6 +18,10 @@ variable "ami" {
 #   default = "ami-0ab6b07a01e922253"
 # }
 
+variable "vpc_id" {
+  default = "vpc-fc27e099"
+}
+
 variable "ec2_type_node" {
   default = "t2.xlarge"
 }
