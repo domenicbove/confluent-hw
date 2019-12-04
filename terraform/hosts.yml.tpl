@@ -16,6 +16,14 @@ all:
     ssl_enabled: true
     sasl_protocol: scram
 
+    kafka_broker_custom_listeners:
+      super:
+        name: SUPER
+        port: 9093
+        ssl_enabled: false
+        ssl_mutual_auth_enabled: false
+        sasl_protocol: none
+
 zookeeper:
   hosts:
     ${node1_private_dns}:
@@ -27,8 +35,17 @@ zookeeper:
 kafka_broker:
   hosts:
     ${node1_private_dns}:
+      kafka_broker_custom_listeners:
+        super:
+          hostname: ${node1_public_dns}
     ${node2_private_dns}:
+      kafka_broker_custom_listeners:
+        super:
+          hostname: ${node2_public_dns}
     ${node3_private_dns}:
+      kafka_broker_custom_listeners:
+        super:
+          hostname: ${node3_public_dns}
 schema_registry:
   hosts:
     ${node1_private_dns}:
