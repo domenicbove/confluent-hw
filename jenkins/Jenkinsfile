@@ -1,0 +1,33 @@
+def config = jobConfig {
+    cron = '@weekly'
+    nodeLabel = 'docker-oraclejdk8'
+    properties = [
+        parameters([
+            string(name: 'TEST_PATH', defaultValue: 'muckrake/tests/ muckrake/connector_tests/', description: 'Use this to specify a test or subset of tests to run.'),
+            string(name: 'NUM_WORKERS', defaultValue: '40', description: 'Number of EC2 nodes to use when running the tests.'),
+            string(name: 'INSTALL_TYPE', defaultValue: 'source', description: 'Use tarball or source'),
+            string(name: 'RESOURCE_URL', defaultValue: '', description: 'If using tarball, specify S3 URL to download artifacts from'),
+            string(name: 'PARALLEL', defaultValue:'true', description: 'Whether to execute the tests in parallel. If disabled, you should probably reduce NUM_WORKERS')
+        ])
+    ]
+    realJobPrefixes = ['system-test-confluent-platform']
+    timeoutHours = 16
+}
+
+def job = {
+    withCredentials([
+        file(credentialsId: 'muckrake-2017-06-01.pem', variable: 'MUCKRAKE_PEM'),
+        file(credentialsId: 'gcs-creds.json', variable: 'GCS_CREDS'),
+        string(credentialsId: 'SAUCE_USERNAME', variable: 'SAUCE_USERNAME'),
+        string(credentialsId: 'SAUCE_ACCESS_KEY', variable: 'SAUCE_ACCESS_KEY')]) {
+        sshagent(['ConfluentJenkins Github SSH Key']) {
+            configFileProvider([configFile(fileId: 'jenkins-maven-global-settings', targetLocation: '/home/jenkins/.m2/settings.xml')]) {
+                stage("Run tests") {
+                    echo "helloworld"
+                }
+            }
+        }
+    }
+}
+
+runJob config, job
